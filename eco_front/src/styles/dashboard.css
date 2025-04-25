@@ -1,0 +1,233 @@
+/* Container for sidebar + dashboard */
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f0f2f5;
+  font-family: Arial, sans-serif;
+}
+
+/* Sidebar styling */
+.sidebar {
+  width: 220px;
+  background-color: #1e1e2f;
+  color: white;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 15px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar ul li:hover {
+  background-color: #33334d;
+}
+
+/* Dashboard content */
+.dashboard-home {
+  flex: 1;
+  padding: 30px;
+  background-color: #ffffff;
+  margin-left: 10px;
+  box-shadow: -4px 0 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.dashboard-home h1 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Create & Edit form styles */
+.create-form,
+.edit-form {
+  /* background-color: #f9f9f9; */
+  padding: 20px;
+  border-radius: 6px;
+  margin-bottom: 30px;
+  /* border: 1px solid #ddd; */
+}
+
+.create-form h2,
+.edit-form h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #444;
+}
+
+.create-form label,
+.edit-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #555;
+}
+
+.create-form input,
+.edit-form input {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Table styles */
+.shipments-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.shipments-table th,
+.shipments-table td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.shipments-table th {
+  background-color: #f4f4f4;
+}
+
+/* Buttons */
+button {
+  padding: 8px 12px;
+  margin: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+button.edit-btn {
+  background-color: black;
+  color: white;
+}
+
+button.edit-btn:hover {
+  background-color: black;
+}
+
+button.delete-btn {
+  background-color:black;
+  color: white;
+}
+
+button.delete-btn:hover {
+  background-color:black;
+}
+
+button.create-btn {
+  background-color:black;
+  color: white;
+}
+
+button.create-btn:hover {
+  background-color:black;
+}
+
+button.update-btn {
+  background-color: black;
+  color: white;
+}
+
+button.update-btn:hover {
+  background-color: black;
+}
+
+td button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+/* Sidebar Links */
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: white;
+}
+
+.sidebar-link:hover {
+  color: #ddd;
+}
+
+.logout-btn {
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  width: 100%;
+}
+
+.logout-btn:hover {
+  background-color: #f8d7da;
+  color:black;
+}
+
+.create-form input {
+  width: 100%;
+  padding: 6px;
+  box-sizing: border-box;
+}
+
+.create-form button.create-btn {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.create-form button.create-btn:hover {
+  background-color: black;
+}
+
+/* Responsive tweaks */
+@media screen and (max-width: 768px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
+
+  .dashboard-home {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .shipments-table {
+    font-size: 12px;
+  }
+
+  button {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}

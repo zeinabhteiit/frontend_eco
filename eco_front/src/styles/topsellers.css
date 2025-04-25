@@ -1,0 +1,102 @@
+/* styles/topsellers.css */
+/* .top-sellers-section {
+    padding: 4rem 2rem;
+  }
+  
+  .top-sellers-section .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .btn-shop-now {
+    padding: 0.75rem 1.5rem;
+    background-color:black;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-shop-now:hover {
+    background-color: #e55a50;
+  } */
+  
+
+
+ /* Promo Banners Section */
+.promo-banners {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 40px 20px;
+  /* background-color: #f8f9fa; */
+  margin: 40px 0;
+}
+
+.promo-card {
+  flex: 1;
+  max-width: 350px;
+  padding: 30px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.promo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.promo-icon-container {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.promo-icon {
+  font-size: 24px;
+}
+
+.shipping-icon {
+  color: #3182ce; /* Blue color for shipping */
+}
+
+.return-icon {
+  color: blue; /* blue color for returns */
+}
+
+.promo-card h3 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.promo-card p {
+  color: #7f8c8d;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .promo-banners {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .promo-card {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,82 @@
+/* Updated Product Grid Styles */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.product-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Keep all your existing hero banner styles */
+.hero-banner {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  min-height: 300px;
+}
+
+/* Updated Promo Banners (now with icons) */
+.promo-banners {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 40px 20px;
+  /* background-color: #f8f9fa; */
+  margin: 40px 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .product-list {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-image {
+    min-height: 200px;
+  }
+  
+  .product-list {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+    gap: 15px;
+    padding: 15px;
+  }
+  
+  .promo-banners {
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-list {
+    grid-template-columns: 1fr; /* 1 column on small mobile */
+  }
+}

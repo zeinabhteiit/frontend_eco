@@ -1,0 +1,21 @@
+/* Center the titles */
+.text-center {
+    text-align: center;
+    margin-top: 2rem;   /* Top spacing */
+    margin-bottom: 2rem; /* Bottom spacing */
+  }
+  
+  /* Add space between the h1 and p inside the text-center */
+.text-center h1 {
+    margin-bottom: 0.5rem; /* Adjust this value to control spacing */
+  }
+  
+  /* Grid styling for products */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+    padding: 1rem 1rem 3rem; /* Top, sides, bottom */
+  }
+  

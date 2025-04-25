@@ -1,0 +1,145 @@
+/* styles/productdetails.css */
+
+/* Product Details Container */
+.pd-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 40px;
+}
+
+/* Search Bar */
+.pd-search-bar {
+  text-align: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #e1e1e1;
+  margin-bottom: 30px;
+}
+
+.pd-search-bar h2 {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #6d6d6d;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+/* Product Content */
+.pd-content {
+  display: flex;
+  gap: 60px;
+  margin-bottom: 50px;
+}
+
+/* Product Image */
+.pd-image-container {
+  flex: 1.2;
+   min-width: 1; 
+  
+}
+.pd-image-container img{
+  width: 280px;
+  height: auto;
+  display :block;
+  margin: 0 auto;
+}
+
+/* Product Info */
+.pd-info {
+  flex: 1;
+  min-width: 0;
+  padding-top: 10px;
+}
+
+.pd-info h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  color: #000;
+  letter-spacing: -0.5px;
+}
+
+.pd-info-desc {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0 0 28px 0;
+  line-height: 1.6;
+}
+
+.pd-price {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #000;
+}
+
+/* Quantity Selector */
+.pd-quantity {
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+}
+
+.pd-quantity label {
+  margin-right: 10px;
+  font-size: 0.9rem;
+}
+
+.pd-quantity-input {
+  width: 45px;
+  padding: 7px;
+  border: 1px solid #d3d3d3;
+  border-radius: 2px;
+  text-align: center;
+  margin-right: 15px;
+  font-size: 0.9rem;
+}
+
+/* Add to Cart Button */
+.pd-add-to-cart {
+  background-color: #000;
+  color: white;
+  border: none;
+  padding: 9px 22px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background-color 0.2s;
+}
+
+.pd-add-to-cart:hover {
+  background-color: #333;
+}
+
+/* Reviews Section */
+.pd-reviews {
+  border-top: 1px solid #e1e1e1;
+  padding-top: 25px;
+}
+
+.pd-review-count {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.pd-review-text {
+  font-style: normal;
+  margin-bottom: 5px;
+  line-height: 1.5;
+}
+
+.pd-review-author {
+  font-weight: 600;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .pd-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .pd-container {
+    padding: 20px;
+  }
+}
