@@ -82,6 +82,8 @@ const CheckoutPage = () => {
     }
   };
 
+  
+ 
   return (
     <>
       <Header />
@@ -173,4 +175,3 @@ const CheckoutPage = () => {
 };
 
 export default CheckoutPage;
-

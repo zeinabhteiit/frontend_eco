@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+// import Header from '../components/Header';
+// import Footer from '../components/Footer';
 import '../styles/signup.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -56,7 +56,7 @@ const SignupPage = () => {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div className="login-container">
         <h2>Create an Account</h2>
         <p className="subtitle">Enter your details below</p>
@@ -98,7 +98,7 @@ const SignupPage = () => {
 
         {message && <p className="message">{message}</p>}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

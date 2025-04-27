@@ -13,6 +13,8 @@ import Signup from './pages/signup';
 import OrderConfirmation from './pages/orderconfirmation';
 import DashboardHome from "./pages/dashboard/DashboardHome";
 import ProtectedRoute from './components/protectedroute';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 
 
 function App() {
@@ -45,8 +47,10 @@ function App() {
                </ProtectedRoute>
               }
             />
-              
+                <Route path="/forgot-password" element={<ForgotPassword />} />
+                <Route path="/reset-password/:token" element={<ResetPassword />} />
           </Routes>
+         
         </div>
        
       </Router>

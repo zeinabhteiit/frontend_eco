@@ -1,13 +1,26 @@
 // login.jsx
-import React, { useState } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import React, { useState, useEffect } from "react";
+// import Header from "../components/Header";
+// import Footer from "../components/Footer";
 import "../styles/login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+
+  // Prevent user from going back to the previous page
+  useEffect(() => {
+    window.history.pushState(null, "", window.location.href);
+    const preventGoBack = () => {
+      window.history.pushState(null, "", window.location.href);
+    };
+    window.addEventListener("popstate", preventGoBack);
+
+    return () => {
+      window.removeEventListener("popstate", preventGoBack);
+    };
+  }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -39,7 +52,7 @@ const Login = () => {
   
   return (
     <div className="login-page">
-      <Header />
+      {/* <Header /> */}
       <main className="login-main">
         {/* <div className="search-prompt">What are you looking for?</div> */}
         
@@ -78,7 +91,7 @@ const Login = () => {
           </form>
         </div>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
