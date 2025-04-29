@@ -11,11 +11,11 @@ import ProductDetails from './pages/productdetails';
 import Login from './pages/Login';
 import Signup from './pages/signup';
 import OrderConfirmation from './pages/orderconfirmation';
-import DashboardHome from "./pages/dashboard/DashboardHome";
+// import DashboardHome from "./pages/dashboard/DashboardHome";
 import ProtectedRoute from './components/protectedroute';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
-
+import ManageShipments from './pages/dashboard/ManageShipments';
 
 function App() {
   return (
@@ -39,16 +39,25 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/order-confirmation" element={<OrderConfirmation />} />
             {/* <Route path="/dashboard" element={<DashboardHome />} /> */}
-            <Route
+            {/* <Route
               path="/dashboard"
              element={
             <ProtectedRoute>
             <DashboardHome />
                </ProtectedRoute>
               }
-            />
+            /> */}
                 <Route path="/forgot-password" element={<ForgotPassword />} />
                 <Route path="/reset-password/:token" element={<ResetPassword />} />
+
+                <Route 
+                    path="/dashboard/shipments" 
+                   element={
+                  <ProtectedRoute>
+                  <ManageShipments />
+                  </ProtectedRoute>
+                     }
+                  />
           </Routes>
          
         </div>

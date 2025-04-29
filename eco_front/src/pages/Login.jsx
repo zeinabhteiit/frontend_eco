@@ -40,7 +40,7 @@ const Login = () => {
         setMessage("Login successful!");
 
         // 👉 Redirect to dashboard page (you can change the path)
-        window.location.href = "/dashboard";
+        window.location.href = "/dashboard/shipments";
       } else {
         setMessage(data.message || "Login failed");
       }

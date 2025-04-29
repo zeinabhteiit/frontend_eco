@@ -1,0 +1,150 @@
+/* Container that holds sidebar + main content */
+.manage-shipments-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+  }
+  
+  /* Main content area beside sidebar */
+  .main-content {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the table horizontally */
+    background-color: #ffffff;
+  }
+  
+  /* Table styling */
+  .shipments-table {
+    width: 80%; /* Make table a bit smaller than full width */
+    border-collapse: collapse;
+    margin-top: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .shipments-table th,
+  .shipments-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  .shipments-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .shipments-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Buttons inside the table */
+  .edit-btn,
+  .delete-btn {
+    padding: 6px 12px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+  }
+  
+  .edit-btn {
+    background-color: black;
+  }
+  
+  .delete-btn {
+    background-color: black;
+  }
+  
+  .edit-btn:hover,
+  .delete-btn:hover {
+    opacity: 0.8;
+  }
+  
+  /* Title */
+  .main-content h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .shipments-table input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  .save-btn, .cancel-btn {
+    padding: 6px 10px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+  }
+  
+  .save-btn {
+    background-color: black;
+  }
+  
+  .cancel-btn {
+    background-color: black;
+  }
+  
+  .save-btn:hover,
+  .cancel-btn:hover {
+    opacity: 0.8;
+  }
+
+  .confirm-delete-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .confirm-delete-content {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .confirm-delete-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .popup-buttons button {
+    padding: 8px 16px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+  }
+  
+  .confirm-btn {
+    background-color: black;
+  }
+  
+  .cancel-btn {
+    background-color:  black;
+  }
+  
+  .confirm-btn:hover,
+  .cancel-btn:hover {
+    opacity: 0.8;
+  }
+  
