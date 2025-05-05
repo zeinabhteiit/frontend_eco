@@ -1,0 +1,52 @@
+/* styles/bestsellers.css */
+
+.best-sellers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: #8b896e; */
+  /* padding: 4rem 0; */
+  padding:  0;
+}
+
+.seller-img-wrapper {
+  position: relative;
+}
+
+.seller-img {
+  width: 800px;
+  height: 600px;
+  border-radius: 2px;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.overlay-content {
+  position: absolute;
+  top: 50%;
+  left: 77%;
+  transform: translateY(-50%);
+  color: white;
+  text-align: left;
+}
+
+.overlay-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.shop-now-btn {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.shop-now-btn:hover {
+  background-color: #ddd;
+}

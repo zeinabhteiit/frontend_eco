@@ -3,6 +3,12 @@ import { getShipments, deleteShipment, updateShipment } from "../../services/shi
 import Sidebar from "../../components/sidebar"; 
 import '../../styles/manageshipment.css';
 
+// 🔧 Format date for input fields and saving (YYYY-MM-DD)
+const formatDate = (dateStr) => {
+  const date = new Date(dateStr);
+  return date.toISOString().split("T")[0];
+};
+
 function ManageShipments() {
   const [shipments, setShipments] = useState([]);
   const [editId, setEditId] = useState(null);
@@ -11,7 +17,7 @@ function ManageShipments() {
     shipment_amount: '',
     shipment_date: ''
   });
-  const [confirmDeleteId, setConfirmDeleteId] = useState(null); // <<< NEW
+  const [confirmDeleteId, setConfirmDeleteId] = useState(null);
 
   useEffect(() => {
     loadShipments();
@@ -28,7 +34,7 @@ function ManageShipments() {
     setEditData({
       order_id: shipment.order_id,
       shipment_amount: shipment.shipment_amount,
-      shipment_date: shipment.shipment_date,
+      shipment_date: formatDate(shipment.shipment_date), // 🛠 format for input field
     });
   };
 
@@ -45,27 +51,25 @@ function ManageShipments() {
     setEditData({ ...editData, [e.target.name]: e.target.value });
   };
 
-//   const handleSave = (id) => {
-//     updateShipment(id, editData)
-//       .then(() => {
-//         loadShipments();
-//         setEditId(null);
-//       })
-//       .catch((err) => console.error(err));
-//   };
+  const handleSave = (id) => {
+    const updatedData = {
+      ...editData,
+      shipment_date: formatDate(editData.shipment_date), // 🛠 ensure formatted date
+    };
+    console.log("Saving shipment with id:", id);
+    console.log("Updated data:", updatedData);
 
-const handleSave = (id) => {
-    updateShipment(id, editData)
+    updateShipment(id, updatedData)
       .then(() => {
-        setEditId(null); // close the inputs after saving
-        loadShipments(); // reload the table with new data
+        setEditId(null);
+        loadShipments();
       })
       .catch((err) => console.error(err));
+      console.error("Error saving shipment:", error);
   };
 
-
   const handleDelete = (id) => {
-    setConfirmDeleteId(id); // show confirm popup
+    setConfirmDeleteId(id);
   };
 
   const confirmDelete = () => {
@@ -96,56 +100,56 @@ const handleSave = (id) => {
             </tr>
           </thead>
           <tbody>
-            {shipments.map((shipment) => (
-              <tr key={shipment.id}>
-                {editId === shipment.id ? (
-                  <>
-                    <td>
-                      <input
-                        type="text"
-                        name="order_id"
-                        value={editData.order_id}
-                        onChange={handleChange}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        name="shipment_amount"
-                        value={editData.shipment_amount}
-                        onChange={handleChange}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="date"
-                        name="shipment_date"
-                        value={editData.shipment_date}
-                        onChange={handleChange}
-                      />
-                    </td>
-                    <td>
-                      <button onClick={() => handleSave(shipment.id)} className="save-btn">Save</button>
-                      <button onClick={handleCancelEdit} className="cancel-btn">Cancel</button>
-                    </td>
-                  </>
-                ) : (
-                  <>
-                    <td>{shipment.order_id}</td>
-                    <td>{shipment.shipment_amount}</td>
-                    <td>{shipment.shipment_date}</td>
-                    <td>
-                      <button onClick={() => handleEdit(shipment)} className="edit-btn">Edit</button>
-                      <button onClick={() => handleDelete(shipment.id)} className="delete-btn">Delete</button>
-                    </td>
-                  </>
-                )}
-              </tr>
-            ))}
-          </tbody>
+  {shipments.map((shipment) => (
+    <tr key={shipment.id}>
+      {editId === shipment.id ? (
+        <>
+          <td>
+            <input
+              type="text"
+              name="order_id"
+              value={editData.order_id}
+              onChange={handleChange}
+            />
+          </td>
+          <td>
+            <input
+              type="text"
+              name="shipment_amount"
+              value={editData.shipment_amount}
+              onChange={handleChange}
+            />
+          </td>
+          <td>
+            <input
+              type="date"
+              name="shipment_date"
+              value={editData.shipment_date}
+              onChange={handleChange}
+            />
+          </td>
+          <td>
+            <button type="button" onClick={() => handleSave(shipment.id)} className="save-btn">Save</button>
+            <button onClick={handleCancelEdit} className="cancel-btn">Cancel</button>
+          </td>
+        </>
+      ) : (
+        <>
+          <td>{shipment.order_id}</td>
+          <td>{shipment.shipment_amount}</td>
+          <td>{formatDate(shipment.shipment_date)}</td>
+          <td>
+            <button onClick={() => handleEdit(shipment)} className="edit-btn">Edit</button>
+            <button onClick={() => handleDelete(shipment.id)} className="delete-btn">Delete</button>
+          </td>
+        </>
+      )}
+    </tr>
+  ))}
+</tbody>
         </table>
 
-        {/* Custom Confirm Popup */}
+        {/* 🔔 Confirm Delete Popup */}
         {confirmDeleteId && (
           <div className="confirm-delete-popup">
             <div className="confirm-delete-content">

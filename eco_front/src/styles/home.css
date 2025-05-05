@@ -1,4 +1,9 @@
 /* Updated Product Grid Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
 .product-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4 columns */
@@ -21,6 +26,11 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
+ /* main {
+  margin-top: 10px;  */
+  /* to control spacing between header and main content */
+/* }  */
+
 /* Keep all your existing hero banner styles */
 .hero-banner {
   width: 100%;
@@ -28,6 +38,7 @@
   margin: 0;
   text-align: center;
   overflow: hidden;
+  margin-top: 0;
 }
 
 

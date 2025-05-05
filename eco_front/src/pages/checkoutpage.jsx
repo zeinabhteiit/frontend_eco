@@ -43,12 +43,23 @@ const CheckoutPage = () => {
       if (!addressRes.ok) throw new Error(addressResult.message || "Failed to save address");
 
       // Step 2: Send order to backend
+      // const orderPayload = {
+      //   subtotal_amount: subtotal,
+      //   total_amount: total,
+      //   order_date: new Date().toISOString().split("T")[0],
+      //   status: "Pending",
+      //   user_id: 1, // Replace with actual user ID when auth is ready
+      // };
       const orderPayload = {
         subtotal_amount: subtotal,
         total_amount: total,
         order_date: new Date().toISOString().split("T")[0],
         status: "Pending",
-        user_id: 1, // Replace with actual user ID when auth is ready
+        user_id: 1,
+        products: cart.map((item) => ({
+          product_id: item.id,
+          quantity: item.quantity
+        }))
       };
 
       const orderRes = await fetch("http://localhost:5000/api/orders", {

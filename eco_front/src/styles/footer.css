@@ -1,89 +1,50 @@
-
-/* Full Width Footer - Left Aligned */
 .footer {
-  background-color: white;
-  color: black;
-  padding: 40px 0 20px;
-  font-family: 'Arial', sans-serif;
-  width: 100%;
+  background-color: #fff;
+  padding: 20px 0;
+  border-top: 1px solid #ddd;
+  font-family: Arial, sans-serif;
 }
 
 .footer-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 30px;
-  padding: 0 20px; /* Padding on sides only */
-  margin: 0; /* Remove auto margin */
-  width: 100%; /* Take full width */
+  display: flex;
+  justify-content: space-evenly; /* or try space-between or center */
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px; /* reduce this value to bring columns closer */
+  padding: 0 20px;
+  flex-wrap: wrap; /* ensures responsiveness */
 }
 
-/* Rest of your existing footer styles remain the same */
+.footer-section {
+  flex: 1;
+  min-width: 180px;
+}
+
 .footer-section h3 {
-  color: black;
-  margin-bottom: 20px;
-  font-size: 18px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .footer-section ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
-.footer-section li {
-  margin-bottom: 10px;
+.footer-section ul li {
+  margin-bottom: 8px;
 }
 
-.footer-section a {
-  color: black;
+.footer-section ul li a {
   text-decoration: none;
-  transition: color 0.3s;
-}
-
-.footer-section a:hover {
-  color: black;
-}
-
-.newsletter input {
-  padding: 10px;
-  width: 70%;
-  border: none;
-  border-radius: 4px 0 0 4px;
-}
-
-.newsletter button {
-  padding: 10px 15px;
-  background-color: black;
-  color: white;
-  border: none;
-  border-radius: 0 4px 4px 0;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.newsletter button:hover {
-  background-color: black;
+  color: #000;
 }
 
 .footer-bottom {
-  text-align:center; /* Changed to left align */
-  padding: 20px 20px 0; /* Added left padding */
-  margin-top: 30px;
-  border-top: 1px solid #eee;
-  width: 100%;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .footer-container {
-    grid-template-columns: 1fr;
-    padding: 0 20px; /* Consistent side padding */
-  }
-  
-  .newsletter input {
-    width: 60%;
-  }
-  
-  .footer-bottom {
-    padding-left: 20px; /* Ensure left alignment */
-  }
+  text-align: center;
+  padding-top: 10px;
+  font-size: 14px;
+  color: #444;
 }

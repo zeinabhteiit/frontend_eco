@@ -20,7 +20,7 @@ const Footer = () => {
             <li><a href="/products">Products</a></li>
             <li><a href="/cart">Cart</a></li>
             <li><a href="/checkout">Checkout</a></li>
-            <li><a href="/account">Account</a></li>
+            {/* <li><a href="/account">Account</a></li> */}
           </ul>
         </div>
 

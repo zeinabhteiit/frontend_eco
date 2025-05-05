@@ -89,6 +89,8 @@
   
   .save-btn {
     background-color: black;
+    z-index: 999;
+    position: relative;
   }
   
   .cancel-btn {

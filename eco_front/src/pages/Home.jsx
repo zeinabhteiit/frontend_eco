@@ -3,10 +3,11 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../styles/home.css';
 // Import your images
-import heroImage from '../assets/hero-banner.jpg'; // Your main banner image
+//import heroImage from '../assets/hero-banner.jpg'; // Your main banner image
 import ProductsList from '../components/productList';
 import TopSellers from '../components/TopSellers';
 import { FaShippingFast, FaExchangeAlt } from 'react-icons/fa'; // Importing icons from react-icons
+import BestSellers from '../components/BestSellers'; // New section
 
 const Home = () => {
   return (
@@ -15,13 +16,15 @@ const Home = () => {
       
       <main>
         {/* Hero Banner Section */}
-        <section className="hero-banner">
+        {/* <section className="hero-banner">
           <img 
             src={heroImage} 
             alt="AthleticSports Best Sellers - Bowman 7" 
             className="hero-image"
           />
-        </section>
+        </section> */}
+         {/* Best Sellers Section (now at the top instead of hero banner) */}
+         <BestSellers />
 
         {/* Products List Section */}
         <section className="product-section">
