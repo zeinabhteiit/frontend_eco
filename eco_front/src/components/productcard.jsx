@@ -3,7 +3,7 @@ import { CartContext } from "../context/CartContext";
 import "../styles/productcard.css"; // Make sure this path is correct
 import {Link, useNavigate } from "react-router-dom"; // Import useNavigate
  
-
+import BlackButton from "./BlackButton";
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useContext(CartContext);
@@ -36,10 +36,15 @@ const ProductCard = ({ product }) => {
           Add to Cart
         </button> */}
 
-        <button className="add-to-cart-button" onClick={handleAddToCartClick} 
+        {/* <button className="add-to-cart-button" onClick={handleAddToCartClick} 
       >
         Add to cart
-      </button>
+      </button> */}
+      <BlackButton 
+  text="Add to cart" 
+  onClick={handleAddToCartClick} 
+  className="add-to-cart-button" 
+/>
       </div>
       
       <div className="product-details">

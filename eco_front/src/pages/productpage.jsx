@@ -4,7 +4,8 @@ import ProductCard from "../components/productcard";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../styles/productpage.css";
-import "../styles/pagination.css";
+// import "../styles/pagination.css";
+import Pagination from "../components/Pagination";
 
 const ProductPage = () => {
   const [products, setProducts] = useState([]);
@@ -76,7 +77,7 @@ const ProductPage = () => {
           ))}
         </div>
         
-        <div className="pagination">
+        {/* <div className="pagination">
           {currentPage > 1 && (
             <button onClick={() => paginate(currentPage - 1)}>Previous</button>
           )}
@@ -110,7 +111,17 @@ const ProductPage = () => {
           {currentPage < Math.ceil(totalProducts / productsPerPage) && (
             <button onClick={() => paginate(currentPage + 1)}>Next</button>
           )}
-        </div>
+        </div> */}
+
+<Pagination
+  currentPage={currentPage}
+  totalItems={totalProducts}
+  itemsPerPage={productsPerPage}
+  onPageChange={paginate}
+/>
+
+
+
       </div>
       <Footer />
     </div>

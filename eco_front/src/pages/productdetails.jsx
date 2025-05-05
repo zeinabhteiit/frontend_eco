@@ -7,6 +7,7 @@ import '../styles/detailsproductpage.css';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { CartContext } from "../context/CartContext";
+import BlackButton from "../components/BlackButton";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -100,12 +101,17 @@ const handleAddToCart = () => {
               />
             </div>
 
-            <button 
+            {/* <button 
               className="pd-add-to-cart"
               onClick={handleAddToCart}
             >
               Add to Cart
-            </button>
+            </button> */}
+<BlackButton
+  text="Add to Cart"
+  onClick={handleAddToCart}
+  className="pd-add-to-cart"
+/>
           </div>
         </div>
 

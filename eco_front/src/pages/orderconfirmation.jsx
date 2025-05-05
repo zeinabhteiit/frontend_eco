@@ -4,6 +4,8 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../styles/confirmation.css";
 
+import GrayButton from "../components/GrayButton";
+
 const OrderConfirmation = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
@@ -41,7 +43,8 @@ const OrderConfirmation = () => {
             ))}
           </ul>
 
-          <button onClick={() => navigate("/")}>Back to Home</button>
+          {/* <button onClick={() => navigate("/")}>Back to Home</button> */}
+          <GrayButton text="Back to Home" onClick={() => navigate("/")} />
         </div>
       </div>
       <Footer />

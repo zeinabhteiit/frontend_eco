@@ -1,12 +1,26 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 // import Header from '../components/Header';
 // import Footer from '../components/Footer';
 import '../styles/signup.css';
-import { useNavigate } from 'react-router-dom';
 
 const SignupPage = () => {
-  const navigate = useNavigate(); // initialized
+  const navigate = useNavigate();
+
+  // Prevent going back from signup page
+  useEffect(() => {
+    const handlePopState = (e) => {
+      navigate(0); // stay on the same page
+    };
+
+    window.history.pushState(null, null, window.location.href);
+    window.addEventListener('popstate', handlePopState);
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -25,7 +39,7 @@ const SignupPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Submitting form with data:', formData); // Add this to debug
+    console.log('Submitting form with data:', formData);
   
     try {
       const response = await fetch('http://localhost:5000/api/auth/register', {
@@ -35,16 +49,15 @@ const SignupPage = () => {
       });
   
       const result = await response.json();
-      console.log('Response from API:', result); // Add this to debug
+      console.log('Response from API:', result);
   
       if (response.ok) {
         setMessage('Account created successfully!');
         setFormData({ name: '', email: '', password: '' });
 
         setTimeout(() => {
-          navigate('/');
-        }, 1000); // redirect after successful signup
-
+          navigate('/', { replace: true }); // replace history to avoid going back
+        }, 1000);
       } else {
         setMessage(result.message || 'Something went wrong');
       }

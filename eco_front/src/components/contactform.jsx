@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+import BlackButton from "../components/BlackButton";
+
 const ContactForm = () => {
   const [contactData, setContactData] = useState({
     name: "",
@@ -77,9 +79,14 @@ const ContactForm = () => {
           ></textarea>
         </div>
         
-        <button type="submit" className="submit-btn">
+        {/* <button type="submit" className="submit-btn">
           SEND MESSAGE
-        </button>
+        </button> */}
+        <BlackButton 
+  type="submit" 
+  text="SEND MESSAGE" 
+  className="submit-btn"
+/>
       </form>
       
       {status && <p className="status-message">{status}</p>}

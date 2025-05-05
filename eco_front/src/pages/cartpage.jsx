@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import "../styles/cartpage.css";
+ //import BlackButton from "../components/BlackButton";
+ import GrayButton from "../components/GrayButton";
 
 const CartPage = () => {
     const { cart, removeFromCart, updateQuantity } = useContext(CartContext);
@@ -23,12 +25,16 @@ const CartPage = () => {
                 {cart.length === 0 ? (
                     <div className="empty-cart">
                         <p>Your cart is empty.</p>
-                        <button 
+                        {/* <button 
                             className="return-btn"
-                            onClick={() => navigate("/")}
+                            onClick={() => navigate("/products")}
                         >
                             Return To Shop
-                        </button>
+                        </button> */}
+<GrayButton 
+  text="Return To Shop"
+  onClick={() => navigate("/products")}
+/>
                     </div>
                 ) : (
                     <div className="clearfix">
@@ -74,12 +80,16 @@ const CartPage = () => {
                             ))}
 
                             <div className="cart-actions">
-                                <button 
+                                {/* <button 
                                     className="return-btn"
-                                    onClick={() => navigate("/")}
+                                    onClick={() => navigate("/products")}
                                 >
                                     Return To Shop
-                                </button>
+                                </button> */}
+                                <GrayButton 
+  text="Return To Shop"
+  onClick={() => navigate("/products")}
+/>
                             </div>
                         </div>
 
@@ -98,12 +108,14 @@ const CartPage = () => {
                                 <span>${subtotal.toFixed(2)}</span>
                             </div>
 
-                            <button 
+                              <button 
                                 className="checkout-btn"
                                 onClick={() => navigate("/checkout")}
                             >
                                 PROCEED TO CHECKOUT
-                            </button>
+                            </button>  
+
+                          
                         </div>
                     </div>
                 )}

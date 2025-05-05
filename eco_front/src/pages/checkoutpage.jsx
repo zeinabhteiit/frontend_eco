@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../styles/checkoutpage.css";
+import BlackButton from "../components/BlackButton";
 
 const CheckoutPage = () => {
   const { cart, clearCart } = useContext(CartContext);
@@ -169,13 +170,20 @@ const CheckoutPage = () => {
                 </div>
               </div>
 
-              <button
+              {/* <button
                 className={`place-order-btn ${isProcessing ? "processing" : ""}`}
                 onClick={handlePlaceOrder}
                 disabled={isProcessing || cart.length === 0}
               >
                 {isProcessing ? "Processing..." : "PLACE ORDER"}
-              </button>
+              </button> */}
+              <BlackButton
+              className={isProcessing ? "processing" : ""}
+              text={isProcessing ? "Processing..." : "PLACE ORDER"}
+               onClick={handlePlaceOrder}
+               disabled={isProcessing || cart.length === 0}
+               />
+
             </div>
           </div>
         </div>
