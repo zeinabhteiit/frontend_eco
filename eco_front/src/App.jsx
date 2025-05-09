@@ -19,7 +19,7 @@ import Dashboard from './pages/dashboard';
 
 import ProductTable from './components/ProductTable';
 import OrdersPage from './pages/OrdersPage'; // adjust path if needed
-import UsersPage from './pages/UsersPage';
+import UsersPage from './pages/usersPage';
 
 
 function App() {
