@@ -15,7 +15,12 @@ import OrderConfirmation from './pages/orderconfirmation';
 import ProtectedRoute from './components/protectedroute';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
-import ManageShipments from './pages/dashboard/ManageShipments';
+import Dashboard from './pages/dashboard';
+
+import ProductTable from './components/ProductTable';
+import OrdersPage from './pages/OrdersPage'; // adjust path if needed
+import UsersPage from './pages/UsersPage';
+
 
 function App() {
   return (
@@ -38,26 +43,20 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/order-confirmation" element={<OrderConfirmation />} />
-            {/* <Route path="/dashboard" element={<DashboardHome />} /> */}
-            {/* <Route
-              path="/dashboard"
-             element={
-            <ProtectedRoute>
-            <DashboardHome />
-               </ProtectedRoute>
-              }
-            /> */}
-                <Route path="/forgot-password" element={<ForgotPassword />} />
-                <Route path="/reset-password/:token" element={<ResetPassword />} />
+           
+           <Route path="/forgot-password" element={<ForgotPassword />} />
+           <Route path="/reset-password/:token" element={<ResetPassword />} />
 
-                <Route 
-                    path="/dashboard/shipments" 
-                   element={
-                  <ProtectedRoute>
-                  <ManageShipments />
-                  </ProtectedRoute>
-                     }
-                  />
+           {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+
+           <Route path="/dashboard" element={ <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>  } />
+                
+           <Route path="/dashboard/products" element={<ProductTable />} />
+           <Route path="/orders" element={<OrdersPage />} />  
+           <Route path="/users" element={<UsersPage />} />   
+
           </Routes>
          
         </div>

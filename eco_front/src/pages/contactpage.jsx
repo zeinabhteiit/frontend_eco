@@ -10,10 +10,7 @@ const ContactPage = () => {
       <Header />
       
       <div className="contact-content">
-        {/* <div className="search-bar">
-          <input type="text" placeholder="What are you looking for?" />
-        </div> */}
-        
+       
         <div className="contact-main">
           <ContactForm />
         </div>
