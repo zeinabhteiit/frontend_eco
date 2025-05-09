@@ -1,6 +1,6 @@
 // src/pages/OrdersPage.jsx
 import React from 'react';
-import Sidebar from '../components/Sidebar';
+import Sidebar from '../components/sidebar';
 import OrderTable from '../components/OrderTable';
 //import '../styles/dashboard.css'; // if you're using the same layout styling
 import '../styles/orderpage.css'; // Importing new styles
