@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import '../styles/home.css';
+import '../styles/Home.css';
 // Import your images
 //import heroImage from '../assets/hero-banner.jpg'; // Your main banner image
 import ProductsList from '../components/productList';
