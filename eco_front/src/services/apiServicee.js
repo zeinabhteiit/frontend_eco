@@ -1,10 +1,14 @@
 import axios from 'axios';
 
 // Set up the base URL for the API
-const API_URL = 'http://localhost:5000/api/products';  // Replace with your actual backend API URL
+//const API_URL = 'http://localhost:5000/api/products';  // Replace with your actual backend API URL
+
+const API_URL = 'https://deployed-back.onrender.com/api/products';
+
 
 const apiClient = axios.create({
-  baseURL: API_URL,
+  // baseURL: API_URL,
+   baseURL: 'https://deployed-back.onrender.com/api/products',
   headers: {
     'Content-Type': 'application/json',
   },
