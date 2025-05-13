@@ -5,15 +5,17 @@ import {Link, useNavigate } from "react-router-dom"; // Import useNavigate
  
 import BlackButton from "./BlackButton";
 
-const ProductCard = ({ product }) => {
+// const ProductCard = ({ product }) => {
+  const ProductCard = ({ product, onAddToCart }) => {
   const { addToCart } = useContext(CartContext);
-  const navigate = useNavigate(); // Initialize navigate
+  //const navigate = useNavigate(); // Initialize navigate
 
   const handleAddToCartClick = (e) => {
     e.preventDefault(); // Prevent default action
     e.stopPropagation(); // Stop event from bubbling up
     addToCart(product); // Add product to cart
-    navigate("/cart"); // Navigate to cart page
+   // navigate("/cart"); // Navigate to cart page
+    if (onAddToCart) onAddToCart(); // <-- use prop passed from parent
   };
 
 

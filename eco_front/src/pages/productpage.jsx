@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import "../styles/productpage.css";
 // import "../styles/pagination.css";
 import Pagination from "../components/Pagination";
+import Modal from "../components/Modal"; // Import Modal component
 
 const ProductPage = () => {
   const [products, setProducts] = useState([]);
@@ -13,6 +14,9 @@ const ProductPage = () => {
   const [productsPerPage] = useState(8);
   const [totalProducts, setTotalProducts] = useState(0);
   const [sortOption, setSortOption] = useState('latest');
+   const [showModal, setShowModal] = useState(false);
+  const [addedProduct, setAddedProduct] = useState(null);
+
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -49,6 +53,10 @@ const ProductPage = () => {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+ const handleAddToCart = (product) => {
+    setAddedProduct(product);
+    setShowModal(true);
+  };
   return (
     <div>
       <Header />
@@ -71,48 +79,21 @@ const ProductPage = () => {
           </select>
         </div>
         
-        <div className="product-page-grid">
+        {/* <div className="product-page-grid">
           {currentProducts.map((product) => (
             <ProductCard key={product._id} product={product} />
           ))}
-        </div>
-        
-        {/* <div className="pagination">
-          {currentPage > 1 && (
-            <button onClick={() => paginate(currentPage - 1)}>Previous</button>
-          )}
-          
-          {Array.from({ length: Math.ceil(totalProducts / productsPerPage) }).map((_, index) => {
-            const pageNumber = index + 1;
-            if (
-              pageNumber === 1 || 
-              pageNumber === Math.ceil(totalProducts / productsPerPage) ||
-              (pageNumber >= currentPage - 1 && pageNumber <= currentPage + 1)
-            ) {
-              return (
-                <button
-                  key={index}
-                  onClick={() => paginate(pageNumber)}
-                  className={currentPage === pageNumber ? "active" : ""}
-                >
-                  {pageNumber}
-                </button>
-              );
-            }
-            if (
-              (pageNumber === currentPage - 2 && currentPage > 3) ||
-              (pageNumber === currentPage + 2 && currentPage < Math.ceil(totalProducts / productsPerPage) - 2)
-            ) {
-              return <span key={index}>...</span>;
-            }
-            return null;
-          })}
-          
-          {currentPage < Math.ceil(totalProducts / productsPerPage) && (
-            <button onClick={() => paginate(currentPage + 1)}>Next</button>
-          )}
         </div> */}
-
+         <div className="product-page-grid">
+          {currentProducts.map((product) => (
+            <ProductCard 
+              key={product._id} 
+              product={product} 
+              onAddToCart={() => handleAddToCart(product)} // Add to cart handler
+            />
+          ))}
+        </div>
+      
 <Pagination
   currentPage={currentPage}
   totalItems={totalProducts}
@@ -123,6 +104,16 @@ const ProductPage = () => {
 
 
       </div>
+
+{/* Modal for displaying added product */}
+      {showModal && (
+        <Modal
+          product={addedProduct}
+          onClose={() => setShowModal(false)} // Close the modal
+        />
+      )}
+
+
       <Footer />
     </div>
   );

@@ -3,11 +3,15 @@ import React, { useState, useEffect } from "react";
 import { getAllProducts } from "../services/apiServicee";
 import ProductCard from "./productcard";
 import '../styles/productlist.css';
+import Modal from "./Modal";
+
 
 const ProductsList = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+   const [showModal, setShowModal] = useState(false);
+  const [addedProduct, setAddedProduct] = useState(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -29,6 +33,16 @@ const ProductsList = () => {
     };
     fetchProducts();
   }, []);
+
+
+   const handleAddToCart = (product) => {
+    setAddedProduct(product);
+    setShowModal(true);
+    // setTimeout(() => {
+    //   setShowModal(false);
+    // }, 2000); // Auto-hide after 2 seconds
+  };
+
 
   if (loading) return (
     <div className="text-center py-20">
@@ -56,9 +70,26 @@ const ProductsList = () => {
           <ProductCard 
             key={product.id} 
             product={product} 
+             onAddToCart={() => handleAddToCart(product)} 
           />
         ))}
       </div>
+
+{showModal && (
+        // <Modal onClose={() => setShowModal(false)}>
+        //   ✅ <strong>{addedProduct?.name}</strong> was added to your cart!
+        // </Modal>
+
+        <Modal 
+  product={addedProduct} 
+  onClose={() => setShowModal(false)} 
+/>
+      )}
+
+
+
+
+
     </div>
   );
 };

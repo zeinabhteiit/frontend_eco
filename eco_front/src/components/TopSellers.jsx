@@ -5,10 +5,13 @@ import ProductCard from "./productcard";
 import { useNavigate } from "react-router-dom";
 import "../styles/topsellers.css";
 import BlackButton from "./BlackButton";
+import Modal from "./Modal"; // ✅ Import your modal
 
 const TopSellers = () => {
   const [topProducts, setTopProducts] = useState([]);
   const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
+const [addedProduct, setAddedProduct] = useState(null);
 
   useEffect(() => {
     const fetchTopSellers = async () => {
@@ -39,9 +42,19 @@ const TopSellers = () => {
       </div>
 
       <div className="products-grid">
-        {topProducts.map(product => (
+        {/* {topProducts.map(product => (
           <ProductCard key={product.id} product={product} />
-        ))}
+        ))} */}
+        {topProducts.map(product => (
+  <ProductCard 
+    key={product.id} 
+    product={product} 
+    onAddToCart={() => {
+      setAddedProduct(product);
+      setShowModal(true);
+    }} 
+  />
+))}
       </div>
 
       <div className="text-center mt-8">
@@ -50,6 +63,16 @@ const TopSellers = () => {
         </button> */}
       <BlackButton text="Shop Now" onClick={() => navigate("/products")} />
       </div>
+
+      
+      {/* ✅ Modal */}
+      {showModal && (
+        <Modal
+          product={addedProduct}
+          onClose={() => setShowModal(false)}
+        />
+      )}
+      
     </section>
   );
 };
