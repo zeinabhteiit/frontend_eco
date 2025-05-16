@@ -3,15 +3,15 @@ import axios from 'axios';
 // Set up the base URL for the API
 //const API_URL = 'http://localhost:5000/api/products';  // Replace with your actual backend API URL
 
-const API_URL = 'https://deployed-back.onrender.com/api/products';
+//const API_URL = 'https://deployed-back.onrender.com/api/products';
 
 
 const apiClient = axios.create({
-  // baseURL: API_URL,
-   baseURL: 'https://deployed-back.onrender.com/api/products',
+  baseURL: 'https://deployed-back.onrender.com/api/products',
   headers: {
     'Content-Type': 'application/json',
   },
+  withCredentials: true
 });
 
 // Add a response interceptor (Optional)
@@ -26,7 +26,8 @@ apiClient.interceptors.response.use(
 // Function to get all products
 export const getAllProducts = async () => {
   try {
-    const response = await axios.get(API_URL);
+    //const response = await axios.get(API_URL);
+  const response = await apiClient.get('/');
     
     // Handle different response structures
     if (Array.isArray(response.data)) {
@@ -82,21 +83,4 @@ export const deleteProduct = async (id) => {
   }
 };
 
-// Add this new function for top sellers
-// export const getTopSellers = async () => {
-//   try {
-//     const response = await axios.get(`${API_URL}/top-sellers`);
-    
-//     // Handle different response structures consistently
-//     if (Array.isArray(response.data)) {
-//       return response.data;
-//     } else if (response.data.data && Array.isArray(response.data.data)) {
-//       return response.data.data;
-//     } else {
-//       throw new Error("Unexpected API response structure");
-//     }
-//   } catch (error) {
-//     console.error("API Error Details:", error);
-//     throw new Error(error.response?.data?.message || 'Failed to fetch top sellers');
-//   }
-// };
+
