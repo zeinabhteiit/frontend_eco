@@ -8,6 +8,7 @@ import axios from 'axios';
 
 const apiClient = axios.create({
   baseURL: 'https://deployed-back.onrender.com/api/products',
+   //baseURL: 'http://localhost:5000/api/products',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -28,6 +29,7 @@ export const getAllProducts = async () => {
   try {
     //const response = await axios.get(API_URL);
   const response = await apiClient.get('/');
+  console.log("Fetch success:", response.data);
     
     // Handle different response structures
     if (Array.isArray(response.data)) {
