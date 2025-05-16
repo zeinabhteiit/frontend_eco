@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar from '../components/sidebar';
-import axios from 'axios';
 import '../styles/dashboard.css';
+import { fetchOrders, fetchUsers, fetchProducts } from '../services/dashboardService';
 
 const Dashboard = () => {
   const [orders, setOrders] = useState([]);
@@ -12,24 +12,18 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
-        const token = localStorage.getItem('token');
+        const [ordersRes, usersRes, productsRes] = await Promise.all([
+          fetchOrders(),
+          fetchUsers(),
+          fetchProducts(),
+        ]);
 
-        const ordersResponse = await axios.get('http://localhost:5000/api/orders', {
-          headers: { Authorization: `Bearer ${token}` }
-        });
-        const usersResponse = await axios.get('http://localhost:5000/api/users', {
-          headers: { Authorization: `Bearer ${token}` }
-        });
-        const productsResponse = await axios.get('http://localhost:5000/api/products', {
-          headers: { Authorization: `Bearer ${token}` }
-        });
-
-       setOrders(ordersResponse.data?.orders || []);
-setTotalOrders(ordersResponse.data?.orders?.length || 0);
-        setTotalUsers(usersResponse.data?.totalUsers || 0);
-        setTotalProducts(productsResponse.data?.totalProducts || 0);
+        setOrders(ordersRes.data?.orders || []);
+        setTotalOrders(ordersRes.data?.orders?.length || 0);
+        setTotalUsers(usersRes.data?.totalUsers || 0);
+        setTotalProducts(productsRes.data?.totalProducts || 0);
       } catch (error) {
-        console.error('Error fetching dashboard data:', error.response?.data || error);
+        console.error('Error fetching dashboard data:', error.response?.data || error.message);
       }
     };
 
@@ -60,14 +54,25 @@ setTotalOrders(ordersResponse.data?.orders?.length || 0);
               </tr>
             </thead>
             <tbody>
-              {Array.isArray(orders) && orders.map(order => (
-                <tr key={order.id}>
-                  <td>{order.id}</td>
-                  <td>{order.customer}</td>
-                  <td>{order.amount}</td>
-                  <td>{order.status}</td>
+              {/* {orders.map(order => (
+                <tr key={order._id || order.id}>
+                  <td>{order._id || order.id}</td>
+                  {/* <td>{order.customer || order.user?.name || 'N/A'}</td> */}
+                  {/* <td>{order.user_id}</td>  */}
+                  {/* <td>{order.amount || order.total || 0}</td> */}
+                  {/* <td>{order.total_amount}</td>
+                  <td>{order.status || 'Pending'}</td>
                 </tr>
-              ))}
+              ))} */} 
+
+              {orders.map(order => (
+    <tr key={order.id}>
+      <td>{order.id}</td>
+      <td>{order.customer || order.user?.name || 'N/A'}</td>
+      <td>{order.total_amount}</td>
+      <td>{order.status || 'Pending'}</td>
+    </tr>
+  ))}
             </tbody>
           </table>
         </div>
