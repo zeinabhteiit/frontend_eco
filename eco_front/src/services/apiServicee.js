@@ -12,7 +12,18 @@ const apiClient = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  withCredentials: true
+  //withCredentials: true
+});
+
+// Attach token to each request
+apiClient.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token'); // or sessionStorage if you're using that
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+}, (error) => {
+  return Promise.reject(error);
 });
 
 // Add a response interceptor (Optional)
