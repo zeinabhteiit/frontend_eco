@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 // Define the base URL for your backend API
-const API_URL = 'http://localhost:5000/api/ordershipments'; // Adjust the URL based on your server's location
+//const API_URL = 'http://localhost:5000/api/ordershipments'; // Adjust the URL based on your server's location
+const API_URL = 'https://deployed-back.onrender.com/api/ordershipments';
 
 // Function to get all shipments
 export const getShipments = () => {

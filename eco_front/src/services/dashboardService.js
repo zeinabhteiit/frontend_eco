@@ -1,7 +1,8 @@
 // src/services/dashboardService.js
 import axios from 'axios';
 
-const API_BASE = 'http://localhost:5000/api';
+//const API_BASE = 'http://localhost:5000/api';
+const API_BASE = 'https://deployed-back.onrender.com/api';
 
 const getToken = () => localStorage.getItem('token');
 
