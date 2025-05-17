@@ -7,8 +7,7 @@ import axios from 'axios';
 
 
 const apiClient = axios.create({
-  //baseURL: 'https://deployed-back.onrender.com/api/products',
-  baseURL: 'https://backend-eco-zee56.onrender.com/api/products',
+  baseURL: 'https://deployed-back.onrender.com/api/products',
    //baseURL: 'http://localhost:5000/api/products',
   headers: {
     'Content-Type': 'application/json',
