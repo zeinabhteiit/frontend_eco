@@ -1,7 +1,7 @@
 //const BASE_URL = 'http://localhost:5000/users';  // Adjust if needed
-const BASE_URL = 'https://deployed-back.onrender.com/users';
+const BASE_URL = 'https://deployed-back.onrender.com/api/users';
 
-const getToken = () => localStorage.getItem('authToken');
+const getToken = () => localStorage.getItem('token');
 
 // Fetch all users
 export const fetchUsers = async () => {
