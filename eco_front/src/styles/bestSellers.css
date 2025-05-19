@@ -1,12 +1,8 @@
-/* styles/bestsellers.css */
-
 .best-sellers {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: #8b896e; */
-  /* padding: 4rem 0; */
-  padding:  0;
+  padding: 0;
 }
 
 .seller-img-wrapper {
@@ -49,4 +45,22 @@
 
 .shop-now-btn:hover {
   background-color: #ddd;
+}
+
+/* ✅ Responsive ONLY: stack images vertically on small screens */
+@media (max-width: 768px) {
+  .best-sellers {
+    flex-direction: column;
+  }
+
+  .seller-img {
+    width: 100%;
+    height: auto;
+  }
+
+  .overlay-content {
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
 }

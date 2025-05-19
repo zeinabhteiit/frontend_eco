@@ -52,10 +52,34 @@ function App() {
            <Route path="/dashboard" element={ <ProtectedRoute>
               <Dashboard />
             </ProtectedRoute>  } />
-                
-           <Route path="/dashboard/products" element={<ProductTable />} />
+
+             <Route
+  path="/dashboard/products"
+  element={
+    <ProtectedRoute>
+      <ProductTable />
+    </ProtectedRoute>
+  }
+/>
+<Route
+  path="/orders"
+  element={
+    <ProtectedRoute>
+      <OrdersPage />
+    </ProtectedRoute>
+  }
+/>
+<Route
+  path="/users"
+  element={
+    <ProtectedRoute>
+      <UsersPage />
+    </ProtectedRoute>
+  }
+/>    
+           {/* <Route path="/dashboard/products" element={<ProductTable />} />
            <Route path="/orders" element={<OrdersPage />} />  
-           <Route path="/users" element={<UsersPage />} />   
+           <Route path="/users" element={<UsersPage />} />    */}
 
           </Routes>
          
