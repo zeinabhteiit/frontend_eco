@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar from '../components/sidebar';
 import '../styles/dashboard.css';
-import { fetchOrders, fetchUsers, fetchProducts } from '../services/dashboardService';
+import { getAllProducts } from '../services/apiservicee';
+import { fetchUsers } from '../services/userservicee';
+import { getShipments } from '../services/shipmentService';
 
 const Dashboard = () => {
   const [orders, setOrders] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [users, setUsers] = useState([]);
+
   const [totalOrders, setTotalOrders] = useState(0);
   const [totalProducts, setTotalProducts] = useState(0);
   const [totalUsers, setTotalUsers] = useState(0);
@@ -12,18 +17,28 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
-        const [ordersRes, usersRes, productsRes] = await Promise.all([
-          fetchOrders(),
+        const [productsRes, usersRes, ordersRes] = await Promise.all([
+          getAllProducts(),
           fetchUsers(),
-          fetchProducts(),
+          getShipments(),
         ]);
 
-        setOrders(ordersRes.data?.orders || []);
-        setTotalOrders(ordersRes.data?.orders?.length || 0);
-        setTotalUsers(usersRes.data?.totalUsers || 0);
-        setTotalProducts(productsRes.data?.totalProducts || 0);
+        const productsData = Array.isArray(productsRes) ? productsRes : productsRes?.data || [];
+        const usersData = Array.isArray(usersRes) ? usersRes : usersRes?.data || [];
+        const ordersData = Array.isArray(ordersRes) ? ordersRes : ordersRes?.data || [];
+
+        console.log("Fetched Orders:", ordersData);
+
+        setProducts(productsData);
+        setUsers(usersData);
+        setOrders(ordersData);
+
+        setTotalProducts(productsData.length);
+        setTotalUsers(usersData.length);
+        setTotalOrders(ordersData.length);
+
       } catch (error) {
-        console.error('Error fetching dashboard data:', error.response?.data || error.message);
+        console.error('Error fetching dashboard data:', error);
       }
     };
 
@@ -42,7 +57,7 @@ const Dashboard = () => {
           <div className="card"><h3>Total Users</h3><p>{totalUsers}</p></div>
         </div>
 
-        <div className="orders-section">
+        {/* <div className="orders-section">
           <h3>Recent Orders</h3>
           <table className="orders-table">
             <thead>
@@ -54,28 +69,48 @@ const Dashboard = () => {
               </tr>
             </thead>
             <tbody>
-              {/* {orders.map(order => (
-                <tr key={order._id || order.id}>
-                  <td>{order._id || order.id}</td>
-                  {/* <td>{order.customer || order.user?.name || 'N/A'}</td> */}
-                  {/* <td>{order.user_id}</td>  */}
-                  {/* <td>{order.amount || order.total || 0}</td> */}
-                  {/* <td>{order.total_amount}</td>
-                  <td>{order.status || 'Pending'}</td>
-                </tr>
-              ))} */} 
-
-              {orders.map(order => (
-    <tr key={order.id}>
-      <td>{order.id}</td>
-      <td>{order.customer || order.user?.name || 'N/A'}</td>
-      <td>{order.total_amount}</td>
-      <td>{order.status || 'Pending'}</td>
-    </tr>
-  ))}
+              {orders.map(order => {
+                console.log('Order:', order);
+                return (
+                  <tr key={order.id || order._id}>
+                    <td>{order.id || order._id}</td>
+                    <td>{order.customerName || order.customer || order.user?.name || 'N/A'}</td>
+                    <td>{order.total_amount || order.amount || order.price || 0}</td>
+                    <td>{order.status || 'Pending'}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
-        </div>
+        </div> */}
+        <div className="orders-section">
+  <h3>Recent Orders</h3>
+  <table className="orders-table">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>User ID</th>
+        <th>Subtotal</th>
+        <th>Total</th>
+        <th>Order Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {orders.map(order => {
+        console.log('Order:', order);
+        return (
+          <tr key={order.id || order._id}>
+            <td>{order.id || order._id}</td>
+            <td>{order.userId || 'N/A'}</td>
+            <td>{order.subtotal || 0}</td>
+            <td>{order.total || 0}</td>
+            <td>{order.orderDate ? new Date(order.orderDate).toLocaleDateString() : 'N/A'}</td>
+          </tr>
+        );
+      })}
+    </tbody>
+  </table>
+</div>
       </main>
     </div>
   );
