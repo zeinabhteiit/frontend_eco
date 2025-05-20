@@ -57,32 +57,6 @@ const Dashboard = () => {
           <div className="card"><h3>Total Users</h3><p>{totalUsers}</p></div>
         </div>
 
-        {/* <div className="orders-section">
-          <h3>Recent Orders</h3>
-          <table className="orders-table">
-            <thead>
-              <tr>
-                <th>Order ID</th>
-                <th>Customer</th>
-                <th>Amount</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {orders.map(order => {
-                console.log('Order:', order);
-                return (
-                  <tr key={order.id || order._id}>
-                    <td>{order.id || order._id}</td>
-                    <td>{order.customerName || order.customer || order.user?.name || 'N/A'}</td>
-                    <td>{order.total_amount || order.amount || order.price || 0}</td>
-                    <td>{order.status || 'Pending'}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div> */}
         <div className="orders-section">
   <h3>Recent Orders</h3>
   <table className="orders-table">
