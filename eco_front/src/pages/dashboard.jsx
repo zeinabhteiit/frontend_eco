@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar from '../components/sidebar';
 import '../styles/dashboard.css';
-import { getAllProducts } from '../services/apiService';
+import { getAllProducts } from '../services/apiServicee';
 import { fetchUsers } from '../services/userservicee';
 import { getShipments } from '../services/shipmentService';
 
